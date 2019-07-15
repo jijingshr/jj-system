@@ -6,7 +6,7 @@ import java.util.Collection;
 import java.util.Map;
 
 public class AsserUtil{
-
+     
 	
 	/**
 	 * 
@@ -15,11 +15,12 @@ public class AsserUtil{
 	 * @param condition
 	 * @param message
 	 * @return: void
+	 * @throws CMSException 
 	 * @throws Exception 
 	 */
-	public static void isTrue(boolean condition, String message) throws Exception{
+	public static void isTrue(boolean condition, String message) throws CMSException{
 		 if(!condition){ 
-			throw new Exception(message);
+			throw new CMSException(message);
 		 }
 	        
 	}
@@ -30,11 +31,12 @@ public class AsserUtil{
 	 * @param condition
 	 * @param message
 	 * @return: void
+	 * @throws CMSException 
 	 * @throws Exception 
 	 */
-	public static void isFalse(boolean condition, String message) throws Exception{
+	public static void isFalse(boolean condition, String message) throws CMSException{
 		 if(condition){
-			 throw new Exception(message);
+			 throw new CMSException(message);
 		 }
 	        
     }
@@ -45,25 +47,27 @@ public class AsserUtil{
 	 * @param obj
 	 * @param message
 	 * @return: void
+	 * @throws CMSException 
 	 * @throws Exception 
 	 */
-	public static void notNull(Object obj, String message) throws Exception{
+	public static void notNull(Object obj, String message) throws CMSException{
 		 if(obj==null) {
-			 throw new Exception(message);
+			 throw new CMSException(message);
 		 }
     }
 	/**
 	 * 
 	 * @Title: isNull 
-	 * @Description:断言集合不为空，对象不能空，以及必须包含1个元素。如果为空，则抛出自定义异常，异常消息为第2个参数默认消息
+	 * @Description:断言对象必须空，如果不为空，则抛出自定义异常，异常消息为第2个参数默认消息
 	 * @param obj
 	 * @param message
 	 * @return: void
+	 * @throws CMSException 
 	 * @throws Exception 
 	 */
-	public static void isNull(Object obj, String message) throws Exception{
-		if(obj==null||obj.hashCode()!=0){
-			throw new Exception(message);
+	public static void isNull(Object obj, String message) throws CMSException{
+		if(obj!=null) {
+			throw new CMSException(message);
 		}
    }
 	/**
@@ -73,11 +77,12 @@ public class AsserUtil{
 	 * @param coll
 	 * @param message
 	 * @return: void
+	 * @throws CMSException 
 	 * @throws Exception 
 	 */
-	public static void notEmpty(Collection<?> coll, String message) throws Exception{
+	public static void notEmpty(Collection<?> coll, String message) throws CMSException{
 		if(coll==null||coll.size()==0){
-			throw new Exception(message);
+			throw new CMSException(message);
 		}
     }
 	/**
@@ -87,11 +92,12 @@ public class AsserUtil{
 	 * @param map
 	 * @param message
 	 * @return: void
+	 * @throws CMSException 
 	 * @throws Exception 
 	 */
-	public static void notEmpty(Map<?,?> map, String message) throws Exception{
+	public static void notEmpty(Map<?,?> map, String message) throws CMSException{
 		    if(map==null||map.isEmpty()) {
-		    	throw new Exception(message);
+		    	throw new CMSException(message);
 		    }
 		}
 	 /**
@@ -101,11 +107,12 @@ public class AsserUtil{
 	  * @param condition
 	  * @param message
 	  * @return: void
+	 * @throws CMSException 
 	 * @throws Exception 
 	  */
-	public static void hasText(String condition, String message) throws Exception{
-		 if(condition==null&&condition.trim().length()<0){
-			 throw new Exception(message);
+	public static void hasText(String condition, String message) throws CMSException{
+		 if(condition==null ||condition.trim().length()<0){
+			 throw new CMSException(message);
 		 }
     }
 	
@@ -116,11 +123,12 @@ public class AsserUtil{
       * @param value
       * @param message
       * @return: void
+     * @throws CMSException 
      * @throws Exception 
       */
-	public static void greaterThanZero(BigDecimal value, String message) throws Exception{
+	public static void greaterThanZero(BigDecimal value, String message) throws CMSException{
 		     if(value.intValue()<=0) {
-		    	 throw new Exception(message);
+		    	 throw new CMSException(message);
 		     }
 	}
 	
